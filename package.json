@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "ng serve --proxy-config proxy.conf.json"
+  },
   "dependencies": {
     "@angular/animations": "^19.0.0 || ^20.0.0",
     "@angular/cdk": "^19.1.3",
