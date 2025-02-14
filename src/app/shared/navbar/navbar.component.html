@@ -1,1 +1,12 @@
-<p>navbar works!</p>
+<nav class="navbar">
+    <a routerLink="/" class="logo">E-Shop</a>
+    <ul class="nav-links">
+        <li><a routerLink="/products">Produits</a></li>
+        <li *ngIf="!authService.isAuthenticated()"><a routerLink="/auth/login">Connexion</a></li>
+        <li *ngIf="!authService.isAuthenticated()"><a routerLink="/auth/signup">Inscription</a></li>
+        <li *ngIf="authService.isAuthenticated()"><a routerLink="/users/profile">Profil</a></li>
+        <li *ngIf="authService.isAuthenticated()">
+            <button (click)="logout()">Déconnexion</button>
+        </li>
+    </ul>
+</nav>
