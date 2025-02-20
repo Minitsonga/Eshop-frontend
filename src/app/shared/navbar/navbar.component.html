@@ -1,4 +1,4 @@
-<nav class="navbar">
+<!-- <nav class="navbar">
     <a routerLink="/" class="logo">E-Shop</a>
     <ul class="nav-links">
         <li><a routerLink="/products">Produits</a></li>
@@ -9,4 +9,34 @@
             <button (click)="logout()">Déconnexion</button>
         </li>
     </ul>
-</nav>
+</nav> -->
+<mat-toolbar color="primary">
+  <!-- Logo -->
+  <a routerLink="/" class="logo"> <mat-icon>shopping_cart</mat-icon> E-Shop </a>
+
+  <!-- Liens de navigation -->
+  <span class="spacer"></span>
+  <nav class="nav-links">
+    <a mat-button routerLink="/">Accueil</a>
+    <a mat-button routerLink="/products">Produits</a>
+
+    <!-- Panier avec badge -->
+    <a mat-button routerLink="/cart" class="cart-button">
+      Panier <mat-icon>shopping_bag</mat-icon>
+      <span class="cart-badge" *ngIf="cartItemCount > 0">{{
+        cartItemCount
+      }}</span>
+    </a>
+
+    <!-- Affichage conditionnel selon l'authentification -->
+    <ng-container *ngIf="!authService.isAuthenticated()">
+      <a mat-button routerLink="/auth/login">Connexion</a>
+      <a mat-button routerLink="/auth/register">Inscription</a>
+    </ng-container>
+
+    <ng-container *ngIf="authService.isAuthenticated()">
+      <a mat-button routerLink="/users/profile">Profil</a>
+      <button mat-button color="warn" (click)="logout()">Déconnexion</button>
+    </ng-container>
+  </nav>
+</mat-toolbar>
